@@ -1,10 +1,14 @@
 import os
+import time
 from dotenv import load_dotenv
 from google import genai
+from google.genai.errors import ClientError
 
 load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+MODEL_NAME = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
 
 
 def draft_onepager(query: str, evidence_blocks: list[str]) -> str:
@@ -23,14 +27,12 @@ STRICT RULES:
 
 TASK:
 Write a one-pager style section answering:
-
 "{query}"
 
 EVIDENCE:
 {evidence_text}
 
 OUTPUT FORMAT:
-
 Summary:
 (3-5 sentences grounded in evidence)
 
@@ -42,11 +44,22 @@ Limitations:
 - what evidence does NOT cover
 """
 
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt,
-    )
-    return response.text
+    # Retry policy: 5 attempts with exponential backoff
+    backoff = 2.0
+    for attempt in range(1, 6):
+        try:
+            response = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=prompt,
+            )
+            return response.text
 
-# for m in client.models.list():
-#     print(m.name)
+        except ClientError as e:
+            # 429 = throttled / quota / resource exhausted
+            if getattr(e, "status_code", None) == 429 or "RESOURCE_EXHAUSTED" in str(e):
+                if attempt == 5:
+                    raise
+                time.sleep(backoff)
+                backoff *= 2
+                continue
+            raise
