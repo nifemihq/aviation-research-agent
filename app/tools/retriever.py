@@ -7,6 +7,7 @@ import re
 
 from pypdf import PdfReader
 
+
 @dataclass
 class Chunk:
     doc_id: str
@@ -64,10 +65,16 @@ def build_chunks(sources_dir: Path) -> List[Chunk]:
     sources_dir = sources_dir.resolve()
 
     supported = {".pdf", ".txt", ".md"}
-    files = [p for p in sources_dir.rglob("*") if p.is_file() and p.suffix.lower() in supported]
+    files = [
+        p
+        for p in sources_dir.rglob("*")
+        if p.is_file() and p.suffix.lower() in supported
+    ]
 
     if not files:
-        raise FileNotFoundError(f"No supported files found in {sources_dir} (pdf/txt/md).")
+        raise FileNotFoundError(
+            f"No supported files found in {sources_dir} (pdf/txt/md)."
+        )
 
     for f in sorted(files):
         doc_id = f.stem
@@ -124,7 +131,9 @@ def score_chunk(query: str, chunk_text: str) -> int:
     return sum(1 for t in q if t in chunk_tokens)
 
 
-def retrieve(query: str, chunks: List[Chunk], *, top_k: int = 5) -> List[Tuple[int, Chunk]]:
+def retrieve(
+    query: str, chunks: List[Chunk], *, top_k: int = 5
+) -> List[Tuple[int, Chunk]]:
     scored: List[Tuple[int, Chunk]] = []
     for ch in chunks:
         s = score_chunk(query, ch.text)

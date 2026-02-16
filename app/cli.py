@@ -2,6 +2,7 @@ from pathlib import Path
 from rich import print
 
 from app.tools.retriever import build_chunks, retrieve
+from app.writer import draft_onepager
 
 
 def format_citation(ch) -> str:
@@ -26,7 +27,9 @@ def main():
 
     if not hits:
         print("[red]No relevant passages found in your local sources.[/red]")
-        print("Tip: add more docs to data/sources/ or ask a question using keywords in your docs.")
+        print(
+            "Tip: add more docs to data/sources/ or ask a question using keywords in your docs."
+        )
         return
 
     print("\n[bold]Top retrieved snippets (grounding evidence):[/bold]\n")
@@ -34,6 +37,14 @@ def main():
         print(f"[cyan]Score {score}[/cyan] {format_citation(ch)}")
         print(ch.text)
         print("-" * 80)
+
+    # Collect texts only
+    evidence_texts = [ch.text for _, ch in hits]
+    print("\n[bold yellow]Generating one-pager draft...[/bold yellow]\n")
+
+    draft = draft_onepager(query, evidence_texts)
+    print("[bold green]=== ONE-PAGER DRAFT ===[/bold green]\n")
+    print(draft)
 
 
 if __name__ == "__main__":
