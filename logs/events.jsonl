@@ -33,3 +33,21 @@
 {"event": "export_saved", "ts_utc": "2026-02-26T15:19:46.178516+00:00", "data": {"query": "how do we calculate taxi time?", "path": "outputs\\20260226_151946_how_do_we_calculate_taxi_time_.md"}}
 {"event": "response_ready", "ts_utc": "2026-02-26T15:19:46.179322+00:00", "data": {"query": "how do we calculate taxi time?", "latency_sec": 17.665, "output_length": 951}}
 {"event": "config", "ts_utc": "2026-02-26T15:19:46.179780+00:00", "data": {"run_id": "a699b486-cfe1-4b00-a766-c9d98b0c5280", "mode": "llm", "model": "gemini-2.0-flash"}}
+{"event": "sources_loaded", "ts_utc": "2026-02-26T15:35:10.460581+00:00", "data": {"num_chunks": 167}}
+{"event": "query_received", "ts_utc": "2026-02-26T15:35:17.256666+00:00", "data": {"query": "hello"}}
+{"event": "retrieval_empty", "ts_utc": "2026-02-26T15:35:17.263068+00:00", "data": {"query": "hello", "requested_top_k": 5}}
+{"event": "sources_loaded", "ts_utc": "2026-02-26T15:50:57.930787+00:00", "data": {"num_chunks": 167}}
+{"event": "query_received", "ts_utc": "2026-02-26T15:51:17.599766+00:00", "data": {"query": "hello"}}
+{"event": "retrieval_empty", "ts_utc": "2026-02-26T15:51:17.605847+00:00", "data": {"query": "hello", "requested_top_k": 5}}
+{"event": "sources_loaded", "ts_utc": "2026-02-26T16:15:16.387354+00:00", "data": {"num_chunks": 167}}
+{"event": "query_received", "ts_utc": "2026-02-26T16:15:26.395618+00:00", "data": {"query": "taxi time weather"}}
+{"event": "retrieval_done", "ts_utc": "2026-02-26T16:15:26.403972+00:00", "data": {"query": "taxi time weather", "requested_top_k": 5, "num_hits": 5, "citations": [{"doc_id": "Prediction of Taxi-time", "page": 3, "chunk_id": 11, "score": 3}, {"doc_id": "Prediction of Taxi-time", "page": 3, "chunk_id": 12, "score": 3}, {"doc_id": "Prediction of Taxi-time", "page": 3, "chunk_id": 13, "score": 3}, {"doc_id": "Prediction of Taxi-time", "page": 3, "chunk_id": 14, "score": 3}, {"doc_id": "Deep_Reinforcement_Learning_for_Real-Time_Ground_Delay_Program_Revision_and_Corresponding_Flight_Delay_Assignments", "page": 1, "chunk_id": 0, "score": 2}]}}
+{"event": "export_saved", "ts_utc": "2026-02-26T16:15:29.245950+00:00", "data": {"query": "taxi time weather", "path": "outputs\\20260226_161529_taxi_time_weather.md"}}
+{"event": "response_ready", "ts_utc": "2026-02-26T16:15:29.246384+00:00", "data": {"query": "taxi time weather", "latency_sec": 2.851, "output_length": 798}}
+{"event": "config", "ts_utc": "2026-02-26T16:15:29.246795+00:00", "data": {"run_id": "00bf9a07-6aa1-4631-b09c-8eec1552becb", "mode": "llm", "model": "gemini-2.0-flash"}}
+{"event": "sources_loaded", "ts_utc": "2026-02-26T16:22:37.837045+00:00", "data": {"num_chunks": 167}}
+{"event": "query_received", "ts_utc": "2026-02-26T16:22:40.506727+00:00", "data": {"query": "taxi-time"}}
+{"event": "retrieval_done", "ts_utc": "2026-02-26T16:22:40.513435+00:00", "data": {"query": "taxi-time", "requested_top_k": 5, "num_hits": 5, "citations": [{"doc_id": "Deep_Reinforcement_Learning_for_Real-Time_Ground_Delay_Program_Revision_and_Corresponding_Flight_Delay_Assignments", "page": 6, "chunk_id": 34, "score": 2}, {"doc_id": "Predicting_Taxi_Times_Using_Airport_Surface_Movement_Data", "page": 1, "chunk_id": 0, "score": 2}, {"doc_id": "Predicting_Taxi_Times_Using_Airport_Surface_Movement_Data", "page": 1, "chunk_id": 1, "score": 2}, {"doc_id": "Predicting_Taxi_Times_Using_Airport_Surface_Movement_Data", "page": 1, "chunk_id": 2, "score": 2}, {"doc_id": "Predicting_Taxi_Times_Using_Airport_Surface_Movement_Data", "page": 1, "chunk_id": 3, "score": 2}]}}
+{"event": "export_saved", "ts_utc": "2026-02-26T16:22:43.837280+00:00", "data": {"query": "taxi-time", "path": "outputs\\20260226_162243_taxi-time.md"}}
+{"event": "response_ready", "ts_utc": "2026-02-26T16:22:43.837671+00:00", "data": {"query": "taxi-time", "latency_sec": 3.331, "output_length": 1318}}
+{"event": "config", "ts_utc": "2026-02-26T16:22:43.838029+00:00", "data": {"run_id": "8dea6a3a-3ae4-4c2f-8647-d558d3011928", "mode": "llm", "model": "gemini-2.0-flash"}}

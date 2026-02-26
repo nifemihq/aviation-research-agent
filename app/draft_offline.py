@@ -25,10 +25,39 @@ def offline_onepager(query: str, hits: List[Tuple[int, Chunk]]) -> str:
 
     lines.append("\nLimitations:")
     lines.append(
-        "- This draft is extractive (no generation). It only surfaces evidence from your local sources."
-    )
-    lines.append(
-        "- If retrieval misses relevant passages, the draft will be incomplete."
+        "what evidence does NOT cover"
     )
 
     return "\n".join(lines)
+
+
+if __name__ == "__main__":
+    from pathlib import Path
+    from rich import print
+
+    from app.tools.retriever import build_chunks, retrieve
+    from app.exporter import save_markdown
+
+    print("[bold green]Aviation Research Agent (OFFLINE)[/bold green]")
+
+    sources_dir = Path("data/sources")
+    chunks = build_chunks(sources_dir)
+    print(f"Loaded {len(chunks)} chunks from {sources_dir}")
+
+    query = input("\nAsk a question: ").strip()
+    if not query:
+        print("[yellow]No question entered.[/yellow]")
+        raise SystemExit(0)
+
+    hits = retrieve(query, chunks, top_k=5)
+    if not hits:
+        print("[red]No relevant passages found in your local sources.[/red]")
+        raise SystemExit(0)
+
+    draft = offline_onepager(query, hits)
+
+    print("\n[bold green]=== OFFLINE ONE-PAGER ===[/bold green]\n")
+    print(draft)
+
+    out_path = save_markdown(query, draft)
+    print(f"\n[bold cyan]Saved to:[/bold cyan] {out_path}")
