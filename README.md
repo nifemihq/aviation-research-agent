@@ -24,6 +24,8 @@ The Aviation Research Agent is a retrieval-augmented research assistant designed
 ### 2. Install Dependencies
 ```pip install -r requirements.txt```
 
+---
+
 ### Running the System
 ### LLM Mode (Requires API Key)
 Create a `.env` file in the root directory:
