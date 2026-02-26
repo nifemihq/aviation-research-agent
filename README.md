@@ -19,7 +19,7 @@ The Aviation Research Agent is a retrieval-augmented research assistant designed
 
 ### Installation
 ### 1. Create Virtual Environment
-```python -m venv .venv```
+```python -m venv .venv```  
 ```.\.venv\Scripts\activate```
 ### 2. Install Dependencies
 ```pip install -r requirements.txt```
