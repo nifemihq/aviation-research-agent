@@ -36,7 +36,7 @@ Run:
 
 ### Offline Mode (No API Required)
 `python -m app.draft_offline`  
-Offline mode just chunks out relevant sections from the local documents. This is it for now. :).
+Offline mode just chunks out relevant sections from the local documents. This is it for now :).
 
 ---
 
